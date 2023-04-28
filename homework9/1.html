@@ -1,0 +1,72 @@
+<html>
+<head>
+	<style>
+	
+		.hidden {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+
+	<div>
+		<button id="homeBtn">首頁</button>
+		<button id="signupBtn">註冊</button>
+		<button id="loginBtn">登入</button>
+		<button id="logoutBtn">登出</button>
+	</div>
+
+
+	<div id="homePage">
+		<h1>首頁</h1>
+	</div>
+	<div id="signupPage" class="hidden">
+		<h1>註冊</h1>
+	</div>
+	<div id="loginPage" class="hidden">
+		<h1>登入</h1>
+	</div>
+	<div id="logoutPage" class="hidden">
+		<h1>登出</h1>
+	</div>
+	<script>
+	
+		const homeBtn = document.getElementById("homeBtn");
+		const signupBtn = document.getElementById("signupBtn");
+		const loginBtn = document.getElementById("loginBtn");
+		const logoutBtn = document.getElementById("logoutBtn");
+
+		
+		const homePage = document.getElementById("homePage");
+		const signupPage = document.getElementById("signupPage");
+		const loginPage = document.getElementById("loginPage");
+		const logoutPage = document.getElementById("logoutPage");
+
+		
+		homeBtn.addEventListener("click", () => {
+			homePage.classList.remove("hidden");
+			signupPage.classList.add("hidden");
+			loginPage.classList.add("hidden");
+			logoutPage.classList.add("hidden");
+		});
+		signupBtn.addEventListener("click", () => {
+			homePage.classList.add("hidden");
+			signupPage.classList.remove("hidden");
+			loginPage.classList.add("hidden");
+			logoutPage.classList.add("hidden");
+		});
+		loginBtn.addEventListener("click", () => {
+			homePage.classList.add("hidden");
+			signupPage.classList.add("hidden");
+			loginPage.classList.remove("hidden");
+			logoutPage.classList.add("hidden");
+		});
+		logoutBtn.addEventListener("click", () => {
+			homePage.classList.add("hidden");
+			signupPage.classList.add("hidden");
+			loginPage.classList.add("hidden");
+			logoutPage.classList.remove("hidden");
+		});
+	</script>
+</body>
+</html>
