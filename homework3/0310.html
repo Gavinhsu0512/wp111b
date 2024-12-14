@@ -47,6 +47,25 @@
       border-radius: 10px;
       margin-top: 20px;
     }
+
+    .welcome {
+      background-color: #ffcc99;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .show-button {
+      margin-top: 20px;
+      background-color: #f4a261;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .show-button:hover {
+      background-color: #e76f51;
+    }
   </style>
 </head>
 <body>
@@ -64,6 +83,7 @@
       <p><input type="password" id="password" placeholder="密碼"/></p>
       <p><input type="text" id="bloodType" placeholder="血型"/></p>
       <p><input type="date" id="birthday" placeholder="生日"/></p>
+      <p><input type="file" id="photo" accept="image/*" /></p> <!-- 上傳照片 -->
       <p><input type="submit" value="提交"/></p>
     </form>
   </div>
@@ -78,7 +98,24 @@
     <p><strong>血型:</strong> <span id="resultBloodType"></span></p>
     <p><strong>生日:</strong> <span id="resultBirthday"></span></p>
     <!-- 顯示照片 -->
-    <img id="resultPhoto" src="unnamed.jpg" alt="我的照片"/>
+    <img id="resultPhoto" src="" alt="我的照片"/>
+  </div>
+
+  <div id="welcomeMessage" class="welcome" style="display:none;">
+    <h3>歡迎您的到來!</h3>
+    <p>我們很高興您註冊成功，以下是您填寫的資料：</p>
+    <p><strong>姓名:</strong> <span id="welcomeName"></span></p>
+    <p><strong>身分證字號:</strong> <span id="welcomeId"></span></p>
+    <p><strong>電話:</strong> <span id="welcomePhone"></span></p>
+    <p><strong>Email:</strong> <span id="welcomeEmail"></span></p>
+    <p><strong>血型:</strong> <span id="welcomeBloodType"></span></p>
+    <p><strong>生日:</strong> <span id="welcomeBirthday"></span></p>
+    <!-- 顯示照片 -->
+    <img id="welcomePhoto" src="" alt="歡迎照片"/>
+  </div>
+
+  <div>
+    <button class="show-button" onclick="showWelcomeMessage()">查看註冊資料</button>
   </div>
 
   <script>
@@ -93,7 +130,7 @@
       const password = document.getElementById("password").value;
       const bloodType = document.getElementById("bloodType").value;
       const birthday = document.getElementById("birthday").value;
-
+      
       // 顯示註冊資料
       document.getElementById("resultName").textContent = name;
       document.getElementById("resultId").textContent = id;
@@ -103,8 +140,33 @@
       document.getElementById("resultBloodType").textContent = bloodType;
       document.getElementById("resultBirthday").textContent = birthday;
 
+      // 顯示照片
+      const photoInput = document.getElementById("photo");
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById("resultPhoto").src = e.target.result;
+      };
+      reader.readAsDataURL(photoInput.files[0]);
+
       // 顯示註冊結果區域
       document.getElementById("result").style.display = "block";
+    }
+
+    function showWelcomeMessage() {
+      // 顯示歡迎訊息
+      document.getElementById("welcomeName").textContent = document.getElementById("resultName").textContent;
+      document.getElementById("welcomeId").textContent = document.getElementById("resultId").textContent;
+      document.getElementById("welcomePhone").textContent = document.getElementById("resultPhone").textContent;
+      document.getElementById("welcomeEmail").textContent = document.getElementById("resultEmail").textContent;
+      document.getElementById("welcomeBloodType").textContent = document.getElementById("resultBloodType").textContent;
+      document.getElementById("welcomeBirthday").textContent = document.getElementById("resultBirthday").textContent;
+      
+      // 顯示照片
+      const photoSrc = document.getElementById("resultPhoto").src;
+      document.getElementById("welcomePhoto").src = photoSrc;
+
+      // 顯示歡迎訊息區域
+      document.getElementById("welcomeMessage").style.display = "block";
     }
   </script>
 </body>
