@@ -41,6 +41,12 @@
     input[type="submit"]:hover {
       background-color: #45a049;
     }
+
+    img {
+      max-width: 200px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -71,12 +77,15 @@
     <p><strong>密碼:</strong> <span id="resultPassword"></span></p>
     <p><strong>血型:</strong> <span id="resultBloodType"></span></p>
     <p><strong>生日:</strong> <span id="resultBirthday"></span></p>
+    <!-- 顯示照片 -->
+    <img id="resultPhoto" src="unnamed.jpg" alt="我的照片"/>
   </div>
 
   <script>
     function showRegistrationDetails(event) {
       event.preventDefault();
 
+      // 取得使用者填寫的資料
       const name = document.getElementById("name").value;
       const id = document.getElementById("id").value;
       const phone = document.getElementById("phone").value;
@@ -85,6 +94,7 @@
       const bloodType = document.getElementById("bloodType").value;
       const birthday = document.getElementById("birthday").value;
 
+      // 顯示註冊資料
       document.getElementById("resultName").textContent = name;
       document.getElementById("resultId").textContent = id;
       document.getElementById("resultPhone").textContent = phone;
@@ -92,6 +102,8 @@
       document.getElementById("resultPassword").textContent = password;
       document.getElementById("resultBloodType").textContent = bloodType;
       document.getElementById("resultBirthday").textContent = birthday;
+
+      // 顯示註冊結果區域
       document.getElementById("result").style.display = "block";
     }
   </script>
