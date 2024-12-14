@@ -5,7 +5,7 @@
     body {
       color: black;
       text-align: center;
-      background-color: lightblue; /* 更改背景顏色 */
+      background-color: lightblue; 
       font-family: Arial, sans-serif;
     }
 
@@ -70,12 +70,11 @@
 </head>
 <body>
   <h1>Who am I</h1>
-  <p>金門大學資工系學生</p>
+  <p>國立金門大學資汛工程學系的的學生</p>
 
-  <!-- 這是原本的鋼琴照片，ID不變 -->
   <img id="pianoPhoto" src="unnamed.jpg" alt="我的鋼琴照片"/>
 
-  <h2>來註冊吧!</h2>
+  <h2>現在來註冊吧!</h2>
   
   <div class="register-form">
     <form id="registerForm" onsubmit="return showRegistrationDetails(event)">
@@ -100,7 +99,6 @@
     <p><strong>密碼:</strong> <span id="resultPassword"></span></p>
     <p><strong>血型:</strong> <span id="resultBloodType"></span></p>
     <p><strong>生日:</strong> <span id="resultBirthday"></span></p>
-    <!-- 顯示照片 -->
     <img id="newPhoto" src="" alt="上傳的照片"/>
   </div>
 
@@ -113,7 +111,6 @@
     <p><strong>Email:</strong> <span id="welcomeEmail"></span></p>
     <p><strong>血型:</strong> <span id="welcomeBloodType"></span></p>
     <p><strong>生日:</strong> <span id="welcomeBirthday"></span></p>
-    <!-- 顯示照片 -->
     <img id="welcomePhoto" src="" alt="歡迎照片"/>
   </div>
 
@@ -125,7 +122,6 @@
     function showRegistrationDetails(event) {
       event.preventDefault();
 
-      // 取得使用者填寫的資料
       const name = document.getElementById("name").value;
       const id = document.getElementById("id").value;
       const phone = document.getElementById("phone").value;
@@ -134,7 +130,6 @@
       const bloodType = document.getElementById("bloodType").value;
       const birthday = document.getElementById("birthday").value;
       
-      // 顯示註冊資料
       document.getElementById("resultName").textContent = name;
       document.getElementById("resultId").textContent = id;
       document.getElementById("resultPhone").textContent = phone;
@@ -143,7 +138,6 @@
       document.getElementById("resultBloodType").textContent = bloodType;
       document.getElementById("resultBirthday").textContent = birthday;
 
-      // 顯示新上傳的照片
       const photoInput = document.getElementById("photo");
       const reader = new FileReader();
       reader.onload = function(e) {
@@ -151,12 +145,10 @@
       };
       reader.readAsDataURL(photoInput.files[0]);
 
-      // 顯示註冊結果區域
       document.getElementById("result").style.display = "block";
     }
 
     function showWelcomeMessage() {
-      // 顯示歡迎訊息
       document.getElementById("welcomeName").textContent = document.getElementById("resultName").textContent;
       document.getElementById("welcomeId").textContent = document.getElementById("resultId").textContent;
       document.getElementById("welcomePhone").textContent = document.getElementById("resultPhone").textContent;
@@ -164,11 +156,9 @@
       document.getElementById("welcomeBloodType").textContent = document.getElementById("resultBloodType").textContent;
       document.getElementById("welcomeBirthday").textContent = document.getElementById("resultBirthday").textContent;
       
-      // 顯示新上傳的照片
       const photoSrc = document.getElementById("newPhoto").src;
       document.getElementById("welcomePhoto").src = photoSrc;
 
-      // 顯示歡迎訊息區域
       document.getElementById("welcomeMessage").style.display = "block";
     }
   </script>
